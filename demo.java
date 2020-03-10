@@ -38,6 +38,14 @@ public class demo
 				r_num = r_scan.nextInt();
 			}
 
+			// Array creation
+			rose[] r = new rose[r_num];
+			for (int r_i = 0; r_i < r_num; r_i++)
+			{
+				r[r_i] = new rose();
+			}
+
+
 			// Update total number of plants
 			total_num = total_num + r_num;
 			System.out.println("(Total plants: "+total_num+") (Remaining spots: "+(20-total_num)+")");
@@ -55,12 +63,20 @@ public class demo
 				System.out.print("Roses >> ");
 				d_num = d_scan.nextInt();
 			}
+			daisy[] d = new daisy[d_num];
+			for (int d_i = 0; d_i < d_num; d_i++)
+			{
+				d[d_i] = new daisy();
+			}
 
+
+			
 			// Update total number of plants
 			total_num = total_num + d_num;
 			System.out.println("(Total plants: "+total_num+") (Remaining spots: "+(20-total_num)+")");
 
-	
+
+			System.out.println("Amount of water daisy 1 needs: "+d[0].water_needed_getter());	
 		}
 	}
 }
