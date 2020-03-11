@@ -7,6 +7,8 @@ public class rose extends plant
 	// Other plants will do water_needed_setter() with other values
 	public rose()
 	{
-		water_needed_setter(2);	
+		water_min_setter(2);
+		water_max_setter(6);
+		water_increment_setter(3);	
 	}
 }

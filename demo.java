@@ -68,15 +68,41 @@ public class demo
 			{
 				d[d_i] = new daisy();
 			}
-
+			
+			
 
 			
 			// Update total number of plants
 			total_num = total_num + d_num;
 			System.out.println("(Total plants: "+total_num+") (Remaining spots: "+(20-total_num)+")");
 
-
-			System.out.println("Amount of water daisy 1 needs: "+d[0].water_needed_getter());	
+			System.out.println("");
+			System.out.println("Demo");
+			System.out.println("Min amt of water daisy 1 needs: "+d[0].water_min_getter());
+			System.out.println("Max amt of water daisy 1 needs: "+d[0].water_max_getter());	
+			System.out.println("Times daisy 1 has been watered: "+d[0].water_received_getter());
+			System.out.println("");
+			System.out.println("Water demo");
+			d[0].water_this_plant(3);
+			System.out.println("");
+			System.out.println("Watering 3 times");
+			System.out.println("Times daisy 1 has been watered: "+d[0].water_received_getter());
+			System.out.println("");
+			System.out.println("Time demo");
+			System.out.println("Time is passing! Incrementing day by one");
+			//d[0].tomorrow();
+			
+			father_time f = new father_time();
+			r = f.rose_ager(r);
+			d = f.daisy_ager(d);
+			
+			System.out.println("Min amt of water daisy 1 needs: "+d[0].water_min_getter());
+			System.out.println("Max amt of water daisy 1 needs: "+d[0].water_max_getter());
 		}
+
+
+
 	}
+	
+
 }
