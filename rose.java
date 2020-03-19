@@ -13,5 +13,7 @@ public class rose extends plant
         water_min_setter(ThreadLocalRandom.current().nextInt(1, 4));
         water_max_setter(ThreadLocalRandom.current().nextInt(5, 10));
         water_increment_setter(3);
+        fertilizer_min_setter(ThreadLocalRandom.current().nextInt(1,3));
+        fertilizer_max_setter(ThreadLocalRandom.current().nextInt(4,6));
     }
 }
