@@ -1,13 +1,13 @@
-package garden;
-import garden.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class daisy extends plant
 {
-	// Constructor for daisy
-	public daisy()
-	{
-		water_min_setter(3);
-		water_max_setter(6);
-		water_increment_setter(3);
-	}
+    // Constructor for daisy
+    public daisy()
+    {
+        ist = new insect();
+        water_min_setter(ThreadLocalRandom.current().nextInt(0, 2));
+        water_max_setter(ThreadLocalRandom.current().nextInt(3, 6));
+        water_increment_setter(2);
+    }
 }
