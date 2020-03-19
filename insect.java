@@ -1,3 +1,6 @@
+package garden;
+import garden.*;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class insect {

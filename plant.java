@@ -1,9 +1,10 @@
+package garden;
+import garden.*;
+
 public class plant
 {
-    // name and alive are not used yet
+    // name is not used yet
     private String name;
-    private boolean alive;
-    insect ist;
 
     // Naming conventions
     // variable_[received, min, max]
@@ -15,7 +16,13 @@ public class plant
     private int water_min; // Min water needed before DYING!!!!
     private int water_max; // Max water needed
     private int water_increment; // How much water goes up every day
+    private boolean alive=true;
+    insect ist;
 
+    /////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////             GETTERS             ////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    
     // This function is a getter for water_received
     public int water_received_getter()
     {
@@ -38,6 +45,17 @@ public class plant
     {
         return this.water_increment;
     }
+
+     // Return the life value of plant
+	public boolean life_getter()
+	{
+		return alive;
+	}
+    
+     /////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////             SETTERS             ////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    
 
     // This function is a setter for water_needed
     // Every plant type (rose, daisy, etc) just has to use this to define how much water it needs
@@ -64,4 +82,10 @@ public class plant
     {
         this.water_received = this.water_received + n;
     }
+	
+	// Set the life value of plant
+	public void life_setter(boolean a)
+	{
+		this.alive=a;
+	}
 }

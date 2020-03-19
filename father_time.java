@@ -1,3 +1,7 @@
+// For John
+package garden;
+import garden.*;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class father_time
@@ -17,6 +21,7 @@ public class father_time
             int max = r[i].water_max_getter(); // Get
             max = max + r[i].water_increment_getter(); // Increment
             r[i].water_max_setter(max); // Set
+            
             bugs = ThreadLocalRandom.current().nextInt(0, 8);
             if(bugs == 1 && !r[i].ist.alive) {
                 r[i].ist = new aphid();
