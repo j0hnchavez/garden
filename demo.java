@@ -13,7 +13,7 @@ public class demo {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("                          Welcome to Gardenbot 2000!");
         System.out.println("                Today is your first day of being a virtual gardener.");
-        System.out.println("         You can plant up to 20 different plants to start off your garden.");
+        System.out.println("         You can plant up to 10 different plants to start off your garden.");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("");
 
