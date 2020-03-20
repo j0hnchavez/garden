@@ -1,7 +1,6 @@
 // For John
 package garden;
 import garden.*;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class father_time
@@ -21,7 +20,15 @@ public class father_time
             int max = r[i].water_max_getter(); // Get
             max = max + r[i].water_increment_getter(); // Increment
             r[i].water_max_setter(max); // Set
-            
+
+            int fmin = r[i].fertilizer_min_getter(); //Get
+            fmin = fmin + r[i].fertilizer_increment_getter(); // Increment
+            r[i].fertilizer_min_setter(fmin); // Set
+
+            int fmax = r[i].fertilizer_max_getter(); //Get
+            fmax = fmax + r[i].fertilizer_increment_getter(); // Increment
+            r[i].fertilizer_min_setter(fmax); // Set
+
             bugs = ThreadLocalRandom.current().nextInt(0, 8);
             if(bugs == 1 && !r[i].ist.alive) {
                 r[i].ist = new aphid();
@@ -49,6 +56,14 @@ public class father_time
             int max = d[i].water_max_getter(); // Get
             max = max + d[i].water_increment_getter(); // Increment
             d[i].water_max_setter(max); // Set
+
+            int fmin = d[i].fertilizer_min_getter(); //Get
+            fmin = fmin + d[i].fertilizer_increment_getter(); // Increment
+            d[i].fertilizer_min_setter(fmin); // Set
+
+            int fmax = d[i].fertilizer_max_getter(); //Get
+            fmax = fmax + d[i].fertilizer_increment_getter(); // Increment
+            d[i].fertilizer_min_setter(fmax); // Set
 
             bugs = ThreadLocalRandom.current().nextInt(0, 12);
             if(bugs == 1 && !d[i].ist.alive) {
