@@ -1,6 +1,3 @@
-// For John
-package garden;
-import garden.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class father_time
@@ -30,13 +27,15 @@ public class father_time
             r[i].fertilizer_min_setter(fmax); // Set
 
             bugs = ThreadLocalRandom.current().nextInt(0, 8);
-            if(bugs == 1 && !r[i].ist.alive) {
+            if(bugs == 1 && !r[i].ist.alive && r[i].alive) {
                 r[i].ist = new aphid();
                 System.out.println("Alert: One of your plants has been infected with aphids!");
+                log.write_line("Rose " + i + " has been infected with aphids", demo.day);
             }
-            else if(bugs == 2 && !r[i].ist.alive) {
+            else if(bugs == 2 && !r[i].ist.alive && r[i].alive) {
                 r[i].ist = new leaf_miner();
                 System.out.println("Alert: One of your plants has been infected with leaf miners!");
+                log.write_line("Rose " + i + " has been infected with leaf miners", demo.day);
             }
         }
         return r;
@@ -66,13 +65,15 @@ public class father_time
             d[i].fertilizer_min_setter(fmax); // Set
 
             bugs = ThreadLocalRandom.current().nextInt(0, 12);
-            if(bugs == 1 && !d[i].ist.alive) {
+            if(bugs == 1 && !d[i].ist.alive && d[i].alive) {
                 d[i].ist = new aphid();
                 System.out.println("Alert: One of your plants has been infected with aphids!");
+                log.write_line("Daisy " + i + " has been infected with aphids", demo.day);
             }
-            else if(bugs == 2 && !d[i].ist.alive) {
+            else if(bugs == 2 && !d[i].ist.alive  && d[i].alive) {
                 d[i].ist = new leaf_miner();
                 System.out.println("Alert: One of your plants has been infected with leaf miners!");
+                log.write_line("Daisy " + i + " has been infected with leaf miners", demo.day);
             }
         }
         return d;

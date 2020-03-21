@@ -1,10 +1,8 @@
-package garden;
-import garden.*;
 import java.util.Scanner;
 
 public class demo {
+    static int day = 0;
     public static void main(String[] args) {
-        int day = 0;
 
         // Garden initialization!
         // I'm sorry everything is over-indented. These things happen.
@@ -19,6 +17,8 @@ public class demo {
 
         // Start off with 0 plants
         int total_num = 0;
+
+        log.create_log();
 
         // Prompt user for number of roses they'd like
         // Their input is restricted so they can't exceed 20 plants total
@@ -40,6 +40,7 @@ public class demo {
         rose[] r = new rose[r_num];
         for (int r_i = 0; r_i < r_num; r_i++) {
             r[r_i] = new rose();
+            log.write_line("Planted 1 rose", day);
         }
 
 
@@ -63,6 +64,7 @@ public class demo {
         daisy[] d = new daisy[d_num];
         for (int d_i = 0; d_i < d_num; d_i++) {
             d[d_i] = new daisy();
+            log.write_line("Planted 1 daisy", day);
         }
 
 
@@ -91,7 +93,8 @@ public class demo {
                 System.out.println("| 1 | Check on your plants");
                 System.out.println("| 2 | Water a plant");
                 System.out.println("| 3 | Fertilize a plant");
-                System.out.println("| 4 | Go to sleep and move forward one day");
+                System.out.println("| 4 | Use pesticides or distribute ladybugs");
+                System.out.println("| 5 | Go to sleep and move forward one day");
 
                 Scanner lvl1_picker = new Scanner(System.in);
                 int lvl1;
@@ -110,14 +113,15 @@ public class demo {
                     } else {
                         for (int rz = 0; rz < r_num; rz++) {
                             System.out.print("R[" + rz + "]: ");
-                            if (r[rz].life_getter() == true) {
+                            if (r[rz].life_getter()) {
                                 System.out.print("Water received: " + r[rz].water_received_getter() + " | ");
                                 System.out.print("Min water needed: " + r[rz].water_min_getter() + " | ");
                                 System.out.println("Max water needed: " + r[rz].water_max_getter() + " ");
                                 System.out.print("Fertilizer received: " + r[rz].fertilizer_received_getter() + " | ");
                                 System.out.print("Min fertilizer needed: " + r[rz].fertilizer_min_getter() + " | ");
                                 System.out.println("Max fertilizer needed: " + r[rz].fertilizer_max_getter() + " \n");
-                            } else if (r[rz].life_getter() == false) {
+                                System.out.println("Current insect infestation: \n" + r[rz].ist.status());
+                            } else if (!r[rz].life_getter()) {
                                 System.out.println("DEAD!");
                             }
                         }
@@ -132,13 +136,14 @@ public class demo {
                     } else {
                         for (int dz = 0; dz < d_num; dz++) {
                             System.out.print("D[" + dz + "]: ");
-                            if (d[dz].life_getter() == true) {
+                            if (d[dz].life_getter()) {
                                 System.out.print("Water received: " + d[dz].water_received_getter() + " | ");
                                 System.out.print("Min water needed: " + d[dz].water_min_getter() + " | ");
                                 System.out.println("Max water needed: " + d[dz].water_max_getter() + "  ");
                                 System.out.print("Fertilizer received: " + d[dz].fertilizer_received_getter() + " | ");
                                 System.out.print("Min fertilizer needed: " + d[dz].fertilizer_min_getter() + " | ");
                                 System.out.println("Max fertilizer needed: " + d[dz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: \n" + d[dz].ist.status());
                             } else {
                                 System.out.println("DEAD!");
                             }
@@ -184,6 +189,7 @@ public class demo {
                         int confirm = rose_zone.nextInt();
                         if (confirm == 1) {
                             r[lvl3 - 1].water_this_plant(num);
+                            log.write_line("Watered rose " + (lvl3 -1) + " " + num + " times", day);
                         }
 
                     }
@@ -209,6 +215,7 @@ public class demo {
                         int confirm = daisy_zone.nextInt();
                         if (confirm == 1) {
                             d[lvl3 - 1].water_this_plant(num);
+                            log.write_line("Watered daisy " + (lvl3 -1) + " " + num + " times", day);
                         }
                     }
                 }
@@ -249,6 +256,7 @@ public class demo {
                         int confirm = rose_zone.nextInt();
                         if (confirm == 1) {
                             r[lvl3 - 1].fertilize_this_plant(num);
+                            log.write_line("Fertilized rose " + (lvl3 -1) + " " + num + " times", day);
                         }
 
                     }
@@ -274,21 +282,102 @@ public class demo {
                         int confirm = daisy_zone.nextInt();
                         if (confirm == 1) {
                             d[lvl3 - 1].fertilize_this_plant(num);
+                            log.write_line("Fertilized daisy " + (lvl3 -1) + " " + num + " times", day);
                         }
                     }
 
-                    } else if (lvl1 == 4) {
-                        grim_reaper g = new grim_reaper();
-                        r = g.rose_killer(r);
-                        d = g.daisy_killer(d);
 
-                        day = day + 1;
-                        lvl0 = 0;
-                        System.out.println("Day is over.");
 
-                        father_time f = new father_time();
-                        r = f.rose_ager(r);
-                        d = f.daisy_ager(d);
+                }
+
+                // use pesticides or ladybugs
+                else if(lvl1 == 4) {
+                    System.out.println("");
+                    System.out.println("Pesticides / Ladybugs");
+                    System.out.println("Which plant type would you like to spray?");
+                    System.out.println("Enter the number that corresponds with your choice");
+                    System.out.println("| 1 | Rose");
+                    System.out.println("| 2 | Daisy");
+                    System.out.println("| 3 | Cancel / Go back");
+
+                    int lvl2 = 0;
+
+                    Scanner lvl2_picker = new Scanner(System.in);
+                    System.out.print(">>");
+                    lvl2 = lvl2_picker.nextInt();
+
+                    if (lvl2 == 1) {
+                        Scanner rose_zone = new Scanner(System.in);
+                        System.out.println("Which rose?");
+                        for (int i = 0; i < r.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	R[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = rose_zone.nextInt();
+
+                        System.out.println("Do you want to use pesticides(1) or ladybugs(2)? or cancel (3)");
+                        System.out.print(">>");
+                        int num = rose_zone.nextInt();
+                        while(num != 1 && num != 2 && num != 3) {
+                            System.out.println("Please enter 1 for pesticides or 2 for ladybugs, 3 to cancel.");
+                        }
+
+                        if(num == 1) {
+                            System.out.println(r[lvl3 - 1].ist.pesticide());
+                            r[lvl3 -1].water_max_setter(3);
+                            r[lvl3 -1].water_min_setter(3);
+                            log.write_line("Sprayed pesticides on rose " + (lvl3 -1), day);
+                        }
+                        else if(num == 2) {
+                            System.out.println(r[lvl3 -1].ist.ladybug());
+                            log.write_line("Put ladybugs on rose " + (lvl3 -1), day);
+                        }
+
+                    }
+                    if (lvl2 == 2) {
+                        Scanner daisy_zone = new Scanner(System.in);
+                        System.out.println("Which daisy?");
+                        for (int i = 0; i < d.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	D[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = daisy_zone.nextInt();
+
+                        System.out.println("Do you want to use pesticides(1) or ladybugs(2)? or cancel (3)");
+                        System.out.print(">>");
+                        int num = daisy_zone.nextInt();
+                        while(num != 1 && num != 2 && num != 3) {
+                            System.out.println("Please enter 1 for pesticides or 2 for ladybugs, 3 to cancel.");
+                        }
+
+                        if(num == 1) {
+                            System.out.println(d[lvl3 - 1].ist.pesticide());
+                            d[lvl3 -1].water_max_setter(3);
+                            d[lvl3 -1].water_min_setter(3);
+                            log.write_line("Sprayed pesticides on daisy " + (lvl3 -1), day);
+                        }
+                        else if(num == 2) {
+                            System.out.println(d[lvl3 -1].ist.ladybug());
+                            log.write_line("Put ladybugs on daisy " + (lvl3 -1), day);
+                        }
+                    }
+
+                }
+
+                else if (lvl1 == 5) {
+                    grim_reaper g = new grim_reaper();
+                    r = g.rose_killer(r);
+                    d = g.daisy_killer(d);
+
+                    day = day + 1;
+                    lvl0 = 0;
+                    System.out.println("Day is over.");
+
+                    father_time f = new father_time();
+                    r = f.rose_ager(r);
+                    d = f.daisy_ager(d);
                     }
                 }
 
