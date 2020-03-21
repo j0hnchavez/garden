@@ -1,6 +1,3 @@
-package garden;
-import garden.*;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class rose extends plant

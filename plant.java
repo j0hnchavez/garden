@@ -1,6 +1,3 @@
-package garden;
-import garden.*;
-
 public class plant
 {
     // name is not used yet
@@ -18,7 +15,7 @@ public class plant
     private int water_min; // Min water needed before DYING!!!!
     private int water_max; // Max water needed
     private int water_increment; // How much water goes up every day
-    private boolean alive=true;
+    public boolean alive=true;
     private int fertilizer_received=0; // How many times this plant has been fertilized
     private int fertilizer_min; // Min fertilizer needed
     private int fertilizer_max; // Max fertilizer needed
