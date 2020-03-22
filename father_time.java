@@ -78,4 +78,83 @@ public class father_time
         }
         return d;
     }
+
+    //cactus[] c;
+    public cactus[] cactus_ager(cactus[] c)
+    {
+        int len = c.length;
+        int bugs;
+        for(int i=0; i<len; i++)
+        {
+            // Get, increment, and set water_min
+            int min = c[i].water_min_getter(); // Get
+            min = min + c[i].water_increment_getter(); // Increment
+            c[i].water_min_setter(min); // Set
+
+            int max = c[i].water_max_getter(); // Get
+            max = max + c[i].water_increment_getter(); // Increment
+            c[i].water_max_setter(max); // Set
+
+            int fmin = c[i].fertilizer_min_getter(); //Get
+            fmin = fmin + c[i].fertilizer_increment_getter(); // Increment
+            c[i].fertilizer_min_setter(fmin); // Set
+
+            int fmax = c[i].fertilizer_max_getter(); //Get
+            fmax = fmax + c[i].fertilizer_increment_getter(); // Increment
+            c[i].fertilizer_min_setter(fmax); // Set
+
+            bugs = ThreadLocalRandom.current().nextInt(0, 8);
+            if(bugs == 1 && !c[i].ist.alive && c[i].alive) {
+                c[i].ist = new aphid();
+                System.out.println("Alert: One of your plants has been infected with aphids!");
+                log.write_line("Cactus " + i + " has been infected with aphids", demo.day);
+            }
+            else if(bugs == 2 && !c[i].ist.alive && c[i].alive) {
+                c[i].ist = new leaf_miner();
+                System.out.println("Alert: One of your plants has been infected with leaf miners!");
+                log.write_line("Cactus " + i + " has been infected with leaf miners", demo.day);
+            }
+        }
+        return c;
+    }
+
+    //orchid[] o;
+    public orchid[] orchid_ager(orchid[] o)
+    {
+        int len = o.length;
+        int bugs;
+        for(int i=0; i<len; i++)
+        {
+            // Get, increment, and set water_min
+            int min = o[i].water_min_getter(); // Get
+            min = min + o[i].water_increment_getter(); // Increment
+            o[i].water_min_setter(min); // Set
+
+            int max = o[i].water_max_getter(); // Get
+            max = max + o[i].water_increment_getter(); // Increment
+            o[i].water_max_setter(max); // Set
+
+            int fmin = o[i].fertilizer_min_getter(); //Get
+            fmin = fmin + o[i].fertilizer_increment_getter(); // Increment
+            o[i].fertilizer_min_setter(fmin); // Set
+
+            int fmax = o[i].fertilizer_max_getter(); //Get
+            fmax = fmax + o[i].fertilizer_increment_getter(); // Increment
+            o[i].fertilizer_min_setter(fmax); // Set
+
+            bugs = ThreadLocalRandom.current().nextInt(0, 8);
+            if(bugs == 1 && !o[i].ist.alive && o[i].alive) {
+                o[i].ist = new aphid();
+                System.out.println("Alert: One of your plants has been infected with aphids!");
+                log.write_line("Orchid " + i + " has been infected with aphids", demo.day);
+            }
+            else if(bugs == 2 && !o[i].ist.alive && o[i].alive) {
+                o[i].ist = new leaf_miner();
+                System.out.println("Alert: One of your plants has been infected with leaf miners!");
+                log.write_line("Orchid " + i + " has been infected with leaf miners", demo.day);
+            }
+        }
+        return o;
+    }
+
 }
