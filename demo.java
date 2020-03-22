@@ -66,10 +66,60 @@ public class demo {
             d[d_i] = new daisy();
             log.write_line("Planted 1 daisy", day);
         }
-
-
         // Update total number of plants
         total_num = total_num + d_num;
+        System.out.println("(Total plants: " + total_num + ") (Remaining spots: " + (10 - total_num) + ")");
+
+
+        // Same process but for cactus
+        System.out.println("");
+        System.out.println("How many cacti would you like?");
+        System.out.print(">> ");
+        Scanner c_scan = new Scanner(System.in);
+        int c_num;
+        c_num = c_scan.nextInt();
+        while (c_num + total_num > 10) {
+            System.out.println("Sorry, that's too many plants. You can only add " + (10 - total_num) + " more plants. Please try again");
+            System.out.println("If you're already at 10 plants, enter 0 for the rest of the plant types.");
+            System.out.print(">> ");
+            c_num = c_scan.nextInt();
+        }
+
+        // Cacti array creation
+        cactus[] c = new cactus[c_num];
+        for (int c_i = 0; c_i < c_num; c_i++) {
+            c[c_i] = new cactus();
+            log.write_line("Planted 1 cactus", day);
+        }
+
+        // Update total number of plants
+        total_num = total_num + c_num;
+        System.out.println("(Total plants: " + total_num + ") (Remaining spots: " + (10 - total_num) + ")");
+
+
+        // Same process but for orchid
+        System.out.println("");
+        System.out.println("How many cacti would you like?");
+        System.out.print(">> ");
+        Scanner o_scan = new Scanner(System.in);
+        int o_num;
+        o_num = o_scan.nextInt();
+        while (o_num + total_num > 10) {
+            System.out.println("Sorry, that's too many plants. You can only add " + (10 - total_num) + " more plants. Please try again");
+            System.out.println("If you're already at 10 plants, enter 0 for the rest of the plant types.");
+            System.out.print(">> ");
+            o_num = o_scan.nextInt();
+        }
+
+        // Orchid array creation
+        orchid[] o = new orchid[o_num];
+        for (int o_i = 0; o_i < o_num; o_i++) {
+            o[o_i] = new orchid();
+            log.write_line("Planted 1 orchid", day);
+        }
+
+        // Update total number of plants
+        total_num = total_num + o_num;
         System.out.println("(Total plants: " + total_num + ") (Remaining spots: " + (10 - total_num) + ")");
 
 		/*
@@ -101,8 +151,8 @@ public class demo {
                 System.out.print(">> ");
                 lvl1 = lvl1_picker.nextInt();
 
+                // Option 1: Get status update on every plant.
                 if (lvl1 == 1) {
-                    // Get status update on every plant.
                     System.out.println("");
                     System.out.println("Plant Status Update");
 
@@ -150,9 +200,50 @@ public class demo {
                         }
                     }
 
+                    // Cactus update
+                    System.out.println("Cacti:");
+                    if (c_num == 0) {
+                        System.out.println("You have no cacti");
+                    } else {
+                        for (int cz = 0; cz < c_num; cz++) {
+                            System.out.print("D[" + cz + "]: ");
+                            if (c[cz].life_getter()) {
+                                System.out.print("Water received: " + c[cz].water_received_getter() + " | ");
+                                System.out.print("Min water needed: " + c[cz].water_min_getter() + " | ");
+                                System.out.println("Max water needed: " + c[cz].water_max_getter() + "  ");
+                                System.out.print("Fertilizer received: " + c[cz].fertilizer_received_getter() + " | ");
+                                System.out.print("Min fertilizer needed: " + c[cz].fertilizer_min_getter() + " | ");
+                                System.out.println("Max fertilizer needed: " + c[cz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: \n" + c[cz].ist.status());
+                            } else {
+                                System.out.println("DEAD!");
+                            }
+                        }
+                    }
+
+                    // Orchid update
+                    System.out.println("Orchids:");
+                    if (o_num == 0) {
+                        System.out.println("You have no orchids");
+                    } else {
+                        for (int oz = 0; oz < o_num; oz++) {
+                            System.out.print("O[" + oz + "]: ");
+                            if (o[oz].life_getter()) {
+                                System.out.print("Water received: " + o[oz].water_received_getter() + " | ");
+                                System.out.print("Min water needed: " + o[oz].water_min_getter() + " | ");
+                                System.out.println("Max water needed: " + o[oz].water_max_getter() + "  ");
+                                System.out.print("Fertilizer received: " + o[oz].fertilizer_received_getter() + " | ");
+                                System.out.print("Min fertilizer needed: " + o[oz].fertilizer_min_getter() + " | ");
+                                System.out.println("Max fertilizer needed: " + o[oz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: \n" + o[oz].ist.status());
+                            } else {
+                                System.out.println("DEAD!");
+                            }
+                        }
+                    }
                 }
 
-                // Water a plant.
+                // Option 2: Water a plant.
                 else if (lvl1 == 2) {
                     int lvl2 = 0;
                     System.out.println("");
@@ -161,12 +252,15 @@ public class demo {
                     System.out.println("Enter the number that corresponds with your choice");
                     System.out.println("| 1 | Rose");
                     System.out.println("| 2 | Daisy");
-                    System.out.println("| 3 | Cancel / Go back");
+                    System.out.println("| 3 | Cactus");
+                    System.out.println("| 4 | Orchids");
+                    System.out.println("| 5 | Cancel / Go back");
 
                     Scanner lvl2_picker = new Scanner(System.in);
                     System.out.print(">>");
                     lvl2 = lvl2_picker.nextInt();
 
+                    // Rose
                     if (lvl2 == 1) {
                         Scanner rose_zone = new Scanner(System.in);
                         System.out.println("Which rose?");
@@ -189,10 +283,12 @@ public class demo {
                         int confirm = rose_zone.nextInt();
                         if (confirm == 1) {
                             r[lvl3 - 1].water_this_plant(num);
-                            log.write_line("Watered rose " + (lvl3 -1) + " " + num + " times", day);
+                            log.write_line("Watered rose " + (lvl3 - 1) + " " + num + " times", day);
                         }
 
                     }
+
+                    // Daisy
                     if (lvl2 == 2) {
                         Scanner daisy_zone = new Scanner(System.in);
                         System.out.println("Which daisy?");
@@ -215,11 +311,67 @@ public class demo {
                         int confirm = daisy_zone.nextInt();
                         if (confirm == 1) {
                             d[lvl3 - 1].water_this_plant(num);
-                            log.write_line("Watered daisy " + (lvl3 -1) + " " + num + " times", day);
+                            log.write_line("Watered daisy " + (lvl3 - 1) + " " + num + " times", day);
                         }
                     }
+
+                    // Cactus
+                    if (lvl2 == 3) {
+                        Scanner cactus_zone = new Scanner(System.in);
+                        System.out.println("Which cacti?");
+                        for (int i = 0; i < c.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	D[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = cactus_zone.nextInt();
+
+                        System.out.println("How many times do you want to water this daisy?");
+                        System.out.print(">>");
+                        int num = cactus_zone.nextInt();
+
+                        System.out.println("Are you sure you want to water D[" + lvl3 + "] " + num + " times?");
+                        System.out.println("| 1 | Yes");
+                        System.out.println("| 2 | No, cancel");
+
+                        System.out.print(">>");
+                        int confirm = cactus_zone.nextInt();
+                        if (confirm == 1) {
+                            c[lvl3 - 1].water_this_plant(num);
+                            log.write_line("Watered cacti " + (lvl3 - 1) + " " + num + " times", day);
+                        }
+                    }
+
+                    // Orchids
+                    if (lvl2 == 4) {
+                        Scanner orchid_zone = new Scanner(System.in);
+                        System.out.println("Which orchid?");
+                        for (int i = 0; i < o.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	O[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = orchid_zone.nextInt();
+
+                        System.out.println("How many times do you want to water this orchid?");
+                        System.out.print(">>");
+                        int num = orchid_zone.nextInt();
+
+                        System.out.println("Are you sure you want to water O[" + lvl3 + "] " + num + " times?");
+                        System.out.println("| 1 | Yes");
+                        System.out.println("| 2 | No, cancel");
+
+                        System.out.print(">>");
+                        int confirm = orchid_zone.nextInt();
+                        if (confirm == 1) {
+                            o[lvl3 - 1].water_this_plant(num);
+                            log.write_line("Watered orchids " + (lvl3 - 1) + " " + num + " times", day);
+                        }
+                    }
+
                 }
-                // Fertilize a plant.
+
+                // Option 3: Fertilize a plant.
                 else if (lvl1 == 3) {
                     int lvl2 = 0;
                     System.out.println("");
@@ -228,12 +380,16 @@ public class demo {
                     System.out.println("Enter the number that corresponds with your choice");
                     System.out.println("| 1 | Rose");
                     System.out.println("| 2 | Daisy");
-                    System.out.println("| 3 | Cancel / Go back");
+                    System.out.println("| 3 | Cactus");
+                    System.out.println("| 4 | Orchids");
+                    System.out.println("| 5 | Fertilizer");
+                    System.out.println("| 6 | Cancel / Go back");
 
                     Scanner lvl2_picker = new Scanner(System.in);
                     System.out.print(">>");
                     lvl2 = lvl2_picker.nextInt();
 
+                    // Rose
                     if (lvl2 == 1) {
                         Scanner rose_zone = new Scanner(System.in);
                         System.out.println("Which rose?");
@@ -260,6 +416,8 @@ public class demo {
                         }
 
                     }
+
+                    // Daisy
                     if (lvl2 == 2) {
                         Scanner daisy_zone = new Scanner(System.in);
                         System.out.println("Which daisy?");
@@ -286,11 +444,66 @@ public class demo {
                         }
                     }
 
+                    // Cactus
+                    if (lvl2 == 3) {
+                        Scanner cactus_zone = new Scanner(System.in);
+                        System.out.println("Which cactus?");
+                        for (int i = 0; i < c.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	C[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = cactus_zone.nextInt();
+
+                        System.out.println("How many times do you want to fertilize this cactus?");
+                        System.out.print(">>");
+                        int num = cactus_zone.nextInt();
+
+                        System.out.println("Are you sure you want to fertilize C[" + lvl3 + "] " + num + " times?");
+                        System.out.println("| 1 | Yes");
+                        System.out.println("| 2 | No, cancel");
+
+                        System.out.print(">>");
+                        int confirm = cactus_zone.nextInt();
+                        if (confirm == 1) {
+                            c[lvl3 - 1].fertilize_this_plant(num);
+                            log.write_line("Fertilized cacti " + (lvl3 -1) + " " + num + " times", day);
+                        }
+                    }
+
+
+                    // Orchids
+                    if (lvl2 == 4) {
+                        Scanner orchid_zone = new Scanner(System.in);
+                        System.out.println("Which orchid?");
+                        for (int i = 0; i < c.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	O[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = orchid_zone.nextInt();
+
+                        System.out.println("How many times do you want to fertilize this orchid?");
+                        System.out.print(">>");
+                        int num = orchid_zone.nextInt();
+
+                        System.out.println("Are you sure you want to fertilize O[" + lvl3 + "] " + num + " times?");
+                        System.out.println("| 1 | Yes");
+                        System.out.println("| 2 | No, cancel");
+
+                        System.out.print(">>");
+                        int confirm = orchid_zone.nextInt();
+                        if (confirm == 1) {
+                            o[lvl3 - 1].fertilize_this_plant(num);
+                            log.write_line("Fertilized orchids " + (lvl3 -1) + " " + num + " times", day);
+                        }
+                    }
+
 
 
                 }
 
-                // use pesticides or ladybugs
+                // Option 4: use pesticides or ladybugs
                 else if(lvl1 == 4) {
                     System.out.println("");
                     System.out.println("Pesticides / Ladybugs");
@@ -298,7 +511,9 @@ public class demo {
                     System.out.println("Enter the number that corresponds with your choice");
                     System.out.println("| 1 | Rose");
                     System.out.println("| 2 | Daisy");
-                    System.out.println("| 3 | Cancel / Go back");
+                    System.out.println("| 3 | Cactus");
+                    System.out.println("| 4 | Orchids");
+                    System.out.println("| 5 | Cancel / Go back");
 
                     int lvl2 = 0;
 
@@ -306,6 +521,7 @@ public class demo {
                     System.out.print(">>");
                     lvl2 = lvl2_picker.nextInt();
 
+                    // Rose
                     if (lvl2 == 1) {
                         Scanner rose_zone = new Scanner(System.in);
                         System.out.println("Which rose?");
@@ -335,6 +551,8 @@ public class demo {
                         }
 
                     }
+
+                    // Daisy
                     if (lvl2 == 2) {
                         Scanner daisy_zone = new Scanner(System.in);
                         System.out.println("Which daisy?");
@@ -364,8 +582,69 @@ public class demo {
                         }
                     }
 
+                    // Cactus
+                    if (lvl2 == 3) {
+                        Scanner cactus_zone = new Scanner(System.in);
+                        System.out.println("Which cactus?");
+                        for (int i = 0; i < c.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	C[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = cactus_zone.nextInt();
+
+                        System.out.println("Do you want to use pesticides(1) or ladybugs(2)? or cancel (3)");
+                        System.out.print(">>");
+                        int num = cactus_zone.nextInt();
+                        while(num != 1 && num != 2 && num != 3) {
+                            System.out.println("Please enter 1 for pesticides or 2 for ladybugs, 3 to cancel.");
+                        }
+
+                        if(num == 1) {
+                            System.out.println(c[lvl3 - 1].ist.pesticide());
+                            c[lvl3 -1].water_max_setter(3);
+                            c[lvl3 -1].water_min_setter(3);
+                            log.write_line("Sprayed pesticides on cacti " + (lvl3 -1), day);
+                        }
+                        else if(num == 2) {
+                            System.out.println(d[lvl3 -1].ist.ladybug());
+                            log.write_line("Put ladybugs on cacti " + (lvl3 -1), day);
+                        }
+                    }
+
+                    // Orchids
+                    if (lvl2 == 3) {
+                        Scanner orchid_zone = new Scanner(System.in);
+                        System.out.println("Which orchid?");
+                        for (int i = 0; i < o.length; i++) {
+                            int ii = i + 1;  // Is this worth it?
+                            System.out.println("| " + ii + " |	O[" + i + "]");
+                        }
+                        System.out.print(">>");
+                        int lvl3 = orchid_zone.nextInt();
+
+                        System.out.println("Do you want to use pesticides(1) or ladybugs(2)? or cancel (3)");
+                        System.out.print(">>");
+                        int num = orchid_zone.nextInt();
+                        while(num != 1 && num != 2 && num != 3) {
+                            System.out.println("Please enter 1 for pesticides or 2 for ladybugs, 3 to cancel.");
+                        }
+
+                        if(num == 1) {
+                            System.out.println(c[lvl3 - 1].ist.pesticide());
+                            o[lvl3 -1].water_max_setter(3);
+                            o[lvl3 -1].water_min_setter(3);
+                            log.write_line("Sprayed pesticides on orchids " + (lvl3 -1), day);
+                        }
+                        else if(num == 2) {
+                            System.out.println(o[lvl3 -1].ist.ladybug());
+                            log.write_line("Put ladybugs on orchids " + (lvl3 -1), day);
+                        }
+                    }
+
                 }
 
+                // Option 5: Next Day
                 else if (lvl1 == 5) {
                     grim_reaper g = new grim_reaper();
                     r = g.rose_killer(r);
@@ -378,10 +657,7 @@ public class demo {
                     father_time f = new father_time();
                     r = f.rose_ager(r);
                     d = f.daisy_ager(d);
-                    }
                 }
-
-
             }
 
 
@@ -389,5 +665,8 @@ public class demo {
 
 
     }
+
+
+}
 
 
