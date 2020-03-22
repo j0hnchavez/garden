@@ -1,3 +1,6 @@
+//package garden;
+//import garden.*;
+
 import java.util.Scanner;
 
 public class demo {
@@ -12,6 +15,7 @@ public class demo {
         System.out.println("                          Welcome to Gardenbot 2000!");
         System.out.println("                Today is your first day of being a virtual gardener.");
         System.out.println("         You can plant up to 10 different plants to start off your garden.");
+        System.out.println("            Available plant types: roses, daisies, cacti, and orchids.");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("");
 
@@ -99,7 +103,7 @@ public class demo {
 
         // Same process but for orchid
         System.out.println("");
-        System.out.println("How many cacti would you like?");
+        System.out.println("How many orchids would you like?");
         System.out.print(">> ");
         Scanner o_scan = new Scanner(System.in);
         int o_num;
@@ -169,8 +173,8 @@ public class demo {
                                 System.out.println("Max water needed: " + r[rz].water_max_getter() + " ");
                                 System.out.print("Fertilizer received: " + r[rz].fertilizer_received_getter() + " | ");
                                 System.out.print("Min fertilizer needed: " + r[rz].fertilizer_min_getter() + " | ");
-                                System.out.println("Max fertilizer needed: " + r[rz].fertilizer_max_getter() + " \n");
-                                System.out.println("Current insect infestation: \n" + r[rz].ist.status());
+                                System.out.print("Max fertilizer needed: " + r[rz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: " + r[rz].ist.status());
                             } else if (!r[rz].life_getter()) {
                                 System.out.println("DEAD!");
                             }
@@ -192,8 +196,8 @@ public class demo {
                                 System.out.println("Max water needed: " + d[dz].water_max_getter() + "  ");
                                 System.out.print("Fertilizer received: " + d[dz].fertilizer_received_getter() + " | ");
                                 System.out.print("Min fertilizer needed: " + d[dz].fertilizer_min_getter() + " | ");
-                                System.out.println("Max fertilizer needed: " + d[dz].fertilizer_max_getter() + " \n");
-                                System.out.println("Current insect infestation: \n" + d[dz].ist.status());
+                                System.out.print("Max fertilizer needed: " + d[dz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: " + d[dz].ist.status());
                             } else {
                                 System.out.println("DEAD!");
                             }
@@ -213,8 +217,8 @@ public class demo {
                                 System.out.println("Max water needed: " + c[cz].water_max_getter() + "  ");
                                 System.out.print("Fertilizer received: " + c[cz].fertilizer_received_getter() + " | ");
                                 System.out.print("Min fertilizer needed: " + c[cz].fertilizer_min_getter() + " | ");
-                                System.out.println("Max fertilizer needed: " + c[cz].fertilizer_max_getter() + " \n");
-                                System.out.println("Current insect infestation: \n" + c[cz].ist.status());
+                                System.out.print("Max fertilizer needed: " + c[cz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: " + c[cz].ist.status());
                             } else {
                                 System.out.println("DEAD!");
                             }
@@ -234,8 +238,8 @@ public class demo {
                                 System.out.println("Max water needed: " + o[oz].water_max_getter() + "  ");
                                 System.out.print("Fertilizer received: " + o[oz].fertilizer_received_getter() + " | ");
                                 System.out.print("Min fertilizer needed: " + o[oz].fertilizer_min_getter() + " | ");
-                                System.out.println("Max fertilizer needed: " + o[oz].fertilizer_max_getter() + " \n");
-                                System.out.println("Current insect infestation: \n" + o[oz].ist.status());
+                                System.out.print("Max fertilizer needed: " + o[oz].fertilizer_max_getter() + " \n");
+                                System.out.println("Current insect infestation: " + o[oz].ist.status());
                             } else {
                                 System.out.println("DEAD!");
                             }
